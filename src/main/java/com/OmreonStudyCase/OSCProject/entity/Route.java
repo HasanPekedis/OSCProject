@@ -12,6 +12,7 @@ public class Route {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String code;
 
     @ManyToOne
     private Airport departure;
@@ -44,4 +45,13 @@ public class Route {
     public void setDestination(Airport destination) {
         this.destination = destination;
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
 }
