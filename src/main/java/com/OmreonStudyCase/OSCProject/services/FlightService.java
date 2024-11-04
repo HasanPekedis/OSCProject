@@ -1,6 +1,9 @@
 package com.OmreonStudyCase.OSCProject.services;
 
 import com.OmreonStudyCase.OSCProject.repository.FlightRepository;
+import com.OmreonStudyCase.OSCProject.repository.AirlineRepository;
+import com.OmreonStudyCase.OSCProject.repository.RouteRepository;
+
 import com.OmreonStudyCase.OSCProject.entity.Flight;
 
 
@@ -15,6 +18,12 @@ public class FlightService {
     @Autowired
     private FlightRepository flightRepository;
 
+    @Autowired
+    private AirlineRepository airlineRepository;
+
+    @Autowired
+    private RouteRepository routeRepository;
+
     public List<Flight> getAllFlights() {
         return flightRepository.findAll();
     }
@@ -24,7 +33,24 @@ public class FlightService {
     }
 
     public Flight addFlight(Flight flight) {
-        return flightRepository.save(flight);
+
+        if (flight.getAirline().getCode() == null && flight.getRoute().getCode() == null) {
+            return flightRepository.save(flight);
+        } else if (flight.getAirline().getCode() == null && flight.getRoute().getCode() != null) {
+            flight.setRoute(routeRepository.findByCode(flight.getRoute().getCode().toString()));
+            return flightRepository.save(flight);    
+        } else if (flight.getAirline().getCode() != null && flight.getRoute().getCode() == null) {
+            flight.setAirline(airlineRepository.findByCode(flight.getAirline().getCode().toString()));    
+            return flightRepository.save(flight);
+        } else {
+
+            flight.setAirline(airlineRepository.findByCode(flight.getAirline().getCode().toString()));
+            flight.setRoute(routeRepository.findByCode(flight.getRoute().getCode().toString()));
+            
+            return flightRepository.save(flight);
+
+        }
+            
     }
 
     public Flight updateFlight(Long id, Flight flightDetails) {
