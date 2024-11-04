@@ -39,4 +39,10 @@ public class AirportController {
                 .map(airport -> new ResponseEntity<>(airport, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+
+    // Endpoint to get an airport by code
+    @GetMapping("/code/{code}")
+    public Airport getAirportByCode(@PathVariable String code) {
+        return airportService.getAirportByCode(code);
+    }
 }
