@@ -34,6 +34,19 @@ public class TicketController {
 
     @PostMapping
     public Ticket addTicket(@RequestBody Ticket ticket) {
+        String sanitizedCardNumber = ticket.getCreditCard().replaceAll("[^0-9]", "");
+
+        if (sanitizedCardNumber.length() < 12) {
+            throw new IllegalArgumentException("Invalid credit card number");
+        }
+
+        String maskedCardNumber = sanitizedCardNumber.substring(0, 6)
+            + "******"
+            + sanitizedCardNumber.substring(sanitizedCardNumber.length() - 4);
+
+        
+        ticket.setCreditCard(maskedCardNumber);
+        
         return ticketService.addTicket(ticket);
     }
 

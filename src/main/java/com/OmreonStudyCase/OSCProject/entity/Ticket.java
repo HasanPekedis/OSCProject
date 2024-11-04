@@ -15,7 +15,8 @@ public class Ticket {
     private String passengerName;
     private String passengerEmail;
     private Double price;
-    private String status; // Örneğin: "booked", "cancelled", "checked-in"
+    private String status; // check-in or booked
+    private String creditCard;
 
     @ManyToOne
     private Flight flight; // Hangi uçuşa ait olduğu
@@ -68,5 +69,13 @@ public class Ticket {
 
     public void setFlight(Flight flight) {
         this.flight = flight;
+    }
+
+    public String getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
     }
 }
