@@ -37,5 +37,10 @@ public class RouteService {
     public void deleteRoute(Long id) {
         routeRepository.deleteById(id);
     }
+
+
+    public Route getRouteByCode(String code) {
+        return routeRepository.findByCode(code);
+    }
 }
 

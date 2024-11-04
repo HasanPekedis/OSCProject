@@ -48,4 +48,10 @@ public class RouteController {
         routeService.deleteRoute(id);
         return ResponseEntity.noContent().build();
     }
+
+    // Endpoint to get a route by code
+    @GetMapping("/code/{code}")
+    public Route getRouteByCode(@PathVariable String code) {
+        return routeService.getRouteByCode(code);
+    }
 }

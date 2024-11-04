@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RouteRepository extends JpaRepository<Route, Long> {
-    // Additional query methods can be defined here if needed
+    Route findByCode(String code);
 }
 
