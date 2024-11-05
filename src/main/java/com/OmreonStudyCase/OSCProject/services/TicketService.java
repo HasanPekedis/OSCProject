@@ -2,10 +2,9 @@ package com.OmreonStudyCase.OSCProject.services;
 
 import com.OmreonStudyCase.OSCProject.repository.TicketRepository;
 import com.OmreonStudyCase.OSCProject.repository.FlightRepository;
-import com.OmreonStudyCase.OSCProject.entity.Airline;
 import com.OmreonStudyCase.OSCProject.entity.Flight;
 import com.OmreonStudyCase.OSCProject.entity.Ticket;
-
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,6 +66,20 @@ public class TicketService {
 
     public void deleteTicket(Long id) {
         ticketRepository.deleteById(id);
+    }
+
+    @Transactional 
+    public void deleteTicketByCode(String code) {
+        Ticket ticket = ticketRepository.findByCode(code);
+        if (ticket != null) {
+            Flight flight = ticket.getFlight();
+            ticketRepository.deleteByCode(code);
+
+            flight.setBookedSeats(flight.getBookedSeats() - 1);
+            flightRepository.save(flight);
+        } else {
+            throw new RuntimeException("Ticket with code " + code + " not found");
+        }
     }
 
     public double calculateTicketPrice(Flight flight) {

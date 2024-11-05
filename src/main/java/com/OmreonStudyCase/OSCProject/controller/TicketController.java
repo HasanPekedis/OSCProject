@@ -73,6 +73,12 @@ public class TicketController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/code/{code}")
+    public ResponseEntity<Void> deleteTicketByCode(@PathVariable String code) {
+        ticketService.deleteTicketByCode(code);
+        return ResponseEntity.noContent().build();
+    }
+
     // Method to get an airline by code
     @GetMapping("/code/{code}")
     public Ticket getTicketByCode(@PathVariable String code) {
