@@ -28,6 +28,21 @@ public class TicketService {
     }
 
     public Ticket addTicket(Ticket ticket) {
+
+        Flight currentFlight = flightRepository.getReferenceById(ticket.getFlight().getId());
+
+        if (currentFlight.getBookedSeats() < currentFlight.getTotalSeats()) {
+            currentFlight.setBookedSeats(currentFlight.getBookedSeats() + 1);
+
+            double updatedPrice = calculateTicketPrice(currentFlight);
+
+            currentFlight.setCurrentTicketPrice(updatedPrice);
+            // Fiyat ve koltuk bilgilerini güncelle
+            flightRepository.save(currentFlight);
+        } else {
+            throw new RuntimeException("There is no empty seats!");
+        }
+
         return ticketRepository.save(ticket);
     }
     
@@ -50,5 +65,17 @@ public class TicketService {
 
     public void deleteTicket(Long id) {
         ticketRepository.deleteById(id);
+    }
+
+    public double calculateTicketPrice(Flight flight) {
+        int occupancyRate = (int) ((double) flight.getBookedSeats() / flight.getTotalSeats() * 100);
+        double updatedPrice = flight.getBaseTicketPrice();
+
+        // Her %10'luk artış için fiyatı %10 arttır
+        for (int i = 10; i <= occupancyRate; i += 10) {
+            updatedPrice += updatedPrice * 0.10;
+        }
+
+        return updatedPrice;
     }
 }
