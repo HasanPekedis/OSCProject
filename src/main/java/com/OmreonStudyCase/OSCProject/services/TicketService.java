@@ -1,6 +1,8 @@
 package com.OmreonStudyCase.OSCProject.services;
 
 import com.OmreonStudyCase.OSCProject.repository.TicketRepository;
+import com.OmreonStudyCase.OSCProject.repository.FlightRepository;
+import com.OmreonStudyCase.OSCProject.entity.Flight;
 import com.OmreonStudyCase.OSCProject.entity.Ticket;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
 
+    @Autowired
+    private FlightRepository flightRepository;
+
     public List<Ticket> getAllTickets() {
         return ticketRepository.findAll();
     }
@@ -23,6 +28,11 @@ public class TicketService {
     }
 
     public Ticket addTicket(Ticket ticket) {
+    
+        Flight flight = flightRepository.getById(ticket.getFlight().getId());       
+        flight.setBookedSeats(flight.getBookedSeats() + 1 );
+
+        
         return ticketRepository.save(ticket);
     }
     

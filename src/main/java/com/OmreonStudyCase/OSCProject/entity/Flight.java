@@ -17,6 +17,9 @@ public class Flight {
     private String flightNumber;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
+    private int totalSeats;
+    private int bookedSeats;
+    private int currentTicketPrice;
 
     @ManyToOne
     private Airline airline;
@@ -75,5 +78,29 @@ public class Flight {
         this.route = route;
     }
 
+    public int getTotalSeats() {
+        return totalSeats;
+    }
+
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
+
+
+    public int getCurrentTicketPrice() {
+        return currentTicketPrice;
+    }
+
+    public void setCurrentTicketPrice(int currentTicketPrice) {
+        this.currentTicketPrice = currentTicketPrice;
+    }
+
+    public int getBookedSeats() {
+        return bookedSeats;
+    }
+
+    public void setBookedSeats(int bookedSeats) {
+        this.bookedSeats = bookedSeats;
+    }
 }
 
