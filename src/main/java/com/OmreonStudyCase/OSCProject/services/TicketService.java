@@ -2,6 +2,7 @@ package com.OmreonStudyCase.OSCProject.services;
 
 import com.OmreonStudyCase.OSCProject.repository.TicketRepository;
 import com.OmreonStudyCase.OSCProject.repository.FlightRepository;
+import com.OmreonStudyCase.OSCProject.entity.Airline;
 import com.OmreonStudyCase.OSCProject.entity.Flight;
 import com.OmreonStudyCase.OSCProject.entity.Ticket;
 
@@ -78,5 +79,11 @@ public class TicketService {
         }
 
         return updatedPrice;
+    }
+
+
+
+    public Ticket getTicketByCode(String code) {
+        return ticketRepository.findByCode(code);
     }
 }

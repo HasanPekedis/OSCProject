@@ -14,6 +14,7 @@ public class Ticket {
     private Long id;
     private String passengerName;
     private String passengerEmail;
+    private String code;
     private Double price;
     private String status; // check-in or booked
     private String creditCard;
@@ -61,6 +62,14 @@ public class Ticket {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public Flight getFlight() {

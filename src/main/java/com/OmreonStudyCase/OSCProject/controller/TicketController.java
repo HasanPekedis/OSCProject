@@ -1,6 +1,7 @@
 package com.OmreonStudyCase.OSCProject.controller;
 
 import com.OmreonStudyCase.OSCProject.services.TicketService;
+import com.OmreonStudyCase.OSCProject.entity.Airline;
 import com.OmreonStudyCase.OSCProject.entity.Ticket;
 
 
@@ -70,5 +71,11 @@ public class TicketController {
     public ResponseEntity<Void> deleteTicket(@PathVariable Long id) {
         ticketService.deleteTicket(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // Method to get an airline by code
+    @GetMapping("/code/{code}")
+    public Ticket getTicketByCode(@PathVariable String code) {
+        return ticketService.getTicketByCode(code);
     }
 }
