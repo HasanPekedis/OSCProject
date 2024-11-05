@@ -37,8 +37,9 @@ public class TicketService {
             double updatedPrice = calculateTicketPrice(currentFlight);
 
             currentFlight.setCurrentTicketPrice(updatedPrice);
-            // Fiyat ve koltuk bilgilerini güncelle
             flightRepository.save(currentFlight);
+
+            ticket.setPrice(updatedPrice);
         } else {
             throw new RuntimeException("There is no empty seats!");
         }
