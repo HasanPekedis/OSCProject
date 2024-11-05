@@ -28,11 +28,6 @@ public class TicketService {
     }
 
     public Ticket addTicket(Ticket ticket) {
-    
-        Flight flight = flightRepository.getById(ticket.getFlight().getId());       
-        flight.setBookedSeats(flight.getBookedSeats() + 1 );
-
-        
         return ticketRepository.save(ticket);
     }
     
