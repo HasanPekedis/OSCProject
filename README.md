@@ -2,6 +2,9 @@
 
 Bu proje, havayolu biletleme işlemlerini gerçekleştiren bir sistemdir. Kullanıcılar, havaalanları, havayolları, uçuşlar, güzergahlar ve biletlerle ilgili işlemleri yapabilir. Bu sistem, bir API üzerinden uçuş rezervasyonları yapmayı, biletleri görüntülemeyi ve yönetmeyi sağlar. Uçuşlar arasındaki fiyat değişiklikleri, bilet satın alım işlemleri, havayolu ve havaalanı yönetimi gibi özellikleri içerir.
 
+![Project Diagram](basicClassDiagram.png)
+
+
 ## **Postman Koleksiyonu:**
 
 Proje için API testlerini kolaylaştırmak amacıyla, bir Postman Koleksiyonu yüklenmiştir. Bu koleksiyon, API'yi test etmek ve uçuşlar, biletler gibi temel işlemleri kolayca denemek için kullanılabilir.
