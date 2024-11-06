@@ -1,0 +1,678 @@
+{
+	"info": {
+		"_postman_id": "cb717a92-23ba-4f51-a582-bb062273566c",
+		"name": "OSCProject",
+		"description": "Omreon Study Case Havayolu Biletleme Sistemi Postman Koleksiyonu",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39457984"
+	},
+	"item": [
+		{
+			"name": "/airlines",
+			"item": [
+				{
+					"name": "/airlines",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/airlines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airlines"
+							]
+						},
+						"description": "**Açıklama**: Tüm havayolu şirketlerini listeler.\n\n**URL**: `http://localhost:8080/airlines`\n\n**Method**: GET\n\n**Response:**\n\n``` json\n{\n    \"id\": 2,\n    \"name\": \"Turkish Airlines\",\n    \"country\": \"Turkey\",\n    \"code\": \"TK\"\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/airlines",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Turkish Airlines\",\n  \"country\": \"Turkey\",\n  \"code\": \"TK\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/airlines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airlines"
+							]
+						},
+						"description": "**Açıklama**: Yeni bir havayolu şirketi ekler.\n\n**Request**:\n\n- **URL**: `http://localhost:8080/airlines`\n    \n- **Method**: POST\n    \n- **Body**:\n    \n\n``` json\n{\n  \"name\": \"Turkish Airlines\",\n  \"country\": \"Turkey\",\n  \"code\": \"TK\"\n}\n\n ```\n\n**Response** (200 OK):\n\n``` json\n{\n    \"id\": 2,\n    \"name\": \"Turkish Airlines\",\n    \"country\": \"Turkey\",\n    \"code\": \"TK\"\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/airlines/{id}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/airlines/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airlines",
+								"2"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir havayolu şirketi bilgisi getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/airlines/{id}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/airlines/1`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 2,\n    \"name\": \"Turkish Airlines\",\n    \"country\": \"Turkey\",\n    \"code\": \"TK\"\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/airlines/code/{code}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/airlines/code/TK",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airlines",
+								"code",
+								"TK"
+							]
+						},
+						"description": "- **Açıklama**: Havayolu koduna göre havayolu şirketi bilgisi getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/airlines/code/{code}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/airlines/code/AA`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 2,\n    \"name\": \"Turkish Airlines\",\n    \"country\": \"Turkey\",\n    \"code\": \"TK\"\n}\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "#### **Servis Adı**: Airline Service\n\n**Açıklama**: Airline Service, havayolu şirketlerini yönetir. Yeni havayolu şirketi ekler, mevcut havayolu şirketlerini sorgular ve uçuş bilgilerini alır."
+		},
+		{
+			"name": "/airports",
+			"item": [
+				{
+					"name": "/airports",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Istanbul Airport\",\n  \"code\": \"IST\",\n  \"city\": \"Istanbul\",\n  \"country\": \"Turkey\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/airports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airports"
+							]
+						},
+						"description": "- **Açıklama**: Yeni bir havaalanı ekler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/airports`\n        \n    - **Method**: POST\n        \n    - **Body**:\n        \n\n``` json\n{\n  \"name\": \"Istanbul Airport\",\n  \"code\": \"IST\",\n  \"city\": \"Istanbul\",\n  \"country\": \"Turkey\"\n}\n\n\n ```\n\n**Response** (201 Created):\n\n``` json\n{\n    \"id\": 3,\n    \"name\": \"Istanbul Airport\",\n    \"code\": \"IST\",\n    \"city\": \"Istanbul\",\n    \"country\": \"Turkey\"\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/airports",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/airports",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airports"
+							]
+						},
+						"description": "- **Açıklama**: Tüm havaalanlarını listeler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/airports`\n        \n    - **Method**: GET\n        \n- **Response** (200 OK):\n    \n\n``` json\n[\n    {\n        \"id\": 3,\n        \"name\": \"Istanbul Airport\",\n        \"code\": \"IST\",\n        \"city\": \"Istanbul\",\n        \"country\": \"Turkey\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Esenboga Airport\",\n        \"code\": \"ESB\",\n        \"city\": \"Ankara\",\n        \"country\": \"Turkey\"\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/airports/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/airports/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airports",
+								"4"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir havaalanı bilgisi getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/airports/{id}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/airports/1`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 4,\n    \"name\": \"Esenboga Airport\",\n    \"code\": \"ESB\",\n    \"city\": \"Ankara\",\n    \"country\": \"Turkey\"\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/airports/code/{code}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/airports/code/ESB",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airports",
+								"code",
+								"ESB"
+							]
+						},
+						"description": "- **Açıklama**: Havaalanı koduna göre havaalanı bilgisi getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/airports/code/{code}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/airports/code/AAA`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 4,\n    \"name\": \"Esenboga Airport\",\n    \"code\": \"ESB\",\n    \"city\": \"Ankara\",\n    \"country\": \"Turkey\"\n}\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "#### **Servis Adı**: Airport Service\n\n**Açıklama**: Airport Service, havaalanı bilgilerini yönetir. Yeni havaalanı ekler, mevcut havaalanlarını sorgular, ID veya havaalanı koduna göre arama yapar."
+		},
+		{
+			"name": "/flights",
+			"item": [
+				{
+					"name": "/flights",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights"
+							]
+						},
+						"description": "- **Açıklama**: Tüm uçuşları listeler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/flights`\n        \n    - **Method**: GET\n        \n- **Response** (200 OK):\n    \n\n``` json\n[\n    {\n        \"id\": 8,\n        \"flightNumber\": \"TK568\",\n        \"departureTime\": \"2024-12-01T10:00:00\",\n        \"arrivalTime\": \"2024-12-01T14:00:00\",\n        \"totalSeats\": 100,\n        \"bookedSeats\": 0,\n        \"currentTicketPrice\": 100.0,\n        \"baseTicketPrice\": 100.0,\n        \"airline\": {\n            \"id\": 2,\n            \"name\": \"Turkish Airlines\",\n            \"country\": \"Turkey\",\n            \"code\": \"TK\"\n        },\n        \"route\": {\n            \"id\": 2,\n            \"code\": \"RT1\",\n            \"departure\": {\n                \"id\": 3,\n                \"name\": \"Istanbul Airport\",\n                \"code\": \"IST\",\n                \"city\": \"Istanbul\",\n                \"country\": \"Turkey\"\n            },\n            \"destination\": {\n                \"id\": 4,\n                \"name\": \"Esenboga Airport\",\n                \"code\": \"ESB\",\n                \"city\": \"Ankara\",\n                \"country\": \"Turkey\"\n            }\n        }\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/flights/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/flights/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights",
+								"8"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir uçuş bilgisi getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/flights/{id}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/flights/8`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 8,\n    \"flightNumber\": \"TK568\",\n    \"departureTime\": \"2024-12-01T10:00:00\",\n    \"arrivalTime\": \"2024-12-01T14:00:00\",\n    \"totalSeats\": 100,\n    \"bookedSeats\": 0,\n    \"currentTicketPrice\": 100.0,\n    \"baseTicketPrice\": 100.0,\n    \"airline\": {\n        \"id\": 2,\n        \"name\": \"Turkish Airlines\",\n        \"country\": \"Turkey\",\n        \"code\": \"TK\"\n    },\n    \"route\": {\n        \"id\": 2,\n        \"code\": \"RT1\",\n        \"departure\": {\n            \"id\": 3,\n            \"name\": \"Istanbul Airport\",\n            \"code\": \"IST\",\n            \"city\": \"Istanbul\",\n            \"country\": \"Turkey\"\n        },\n        \"destination\": {\n            \"id\": 4,\n            \"name\": \"Esenboga Airport\",\n            \"code\": \"ESB\",\n            \"city\": \"Ankara\",\n            \"country\": \"Turkey\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/flights",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"flightNumber\": \"TK568\",\n  \"departureTime\": \"2024-12-01T10:00:00\",\n  \"arrivalTime\": \"2024-12-01T14:00:00\",\n  \"totalSeats\": 100,\n  \"bookedSeats\": 0,\n  \"currentTicketPrice\": 100.00,\n  \"baseTicketPrice\": 100.00,\n  \"airline\": {\n    \"id\": 2\n  },\n  \"route\": {\n    \"id\": 2\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flights",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights"
+							]
+						},
+						"description": "- **Açıklama**: Yeni bir uçuş ekler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/flights`\n        \n    - **Method**: POST\n        \n    - **Body**:\n        \n\n``` json\n{\n  \"flightNumber\": \"TK568\",\n  \"departureTime\": \"2024-12-01T10:00:00\",\n  \"arrivalTime\": \"2024-12-01T14:00:00\",\n  \"totalSeats\": 100,\n  \"bookedSeats\": 0,\n  \"currentTicketPrice\": 100.00,\n  \"baseTicketPrice\": 100.00,\n  \"airline\": {\n    \"id\": 2\n  },\n  \"route\": {\n    \"id\": 2\n  }\n}\n\n ```\n\n**Response** (201 Created):\n\n``` json\n{\n    \"id\": 8,\n    \"flightNumber\": \"TK568\",\n    \"departureTime\": \"2024-12-01T10:00:00\",\n    \"arrivalTime\": \"2024-12-01T14:00:00\",\n    \"totalSeats\": 100,\n    \"bookedSeats\": 0,\n    \"currentTicketPrice\": 100.0,\n    \"baseTicketPrice\": 100.0,\n    \"airline\": {\n        \"id\": 2,\n        \"name\": null,\n        \"country\": null,\n        \"code\": null\n    },\n    \"route\": {\n        \"id\": 2,\n        \"code\": null,\n        \"departure\": null,\n        \"destination\": null\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/flights/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 8,\n    \"flightNumber\": \"TK999\",\n    \"departureTime\": \"2024-12-01T10:00:00\",\n    \"arrivalTime\": \"2024-12-01T14:00:00\",\n    \"totalSeats\": 100,\n    \"bookedSeats\": 0,\n    \"currentTicketPrice\": 100.0,\n    \"baseTicketPrice\": 100.0,\n    \"airline\": {\n        \"id\": 2,\n        \"name\": \"Turkish Airlines\",\n        \"country\": \"Turkey\",\n        \"code\": \"TK\"\n    },\n    \"route\": {\n        \"id\": 2,\n        \"code\": \"RT1\",\n        \"departure\": {\n            \"id\": 3,\n            \"name\": \"Istanbul Airport\",\n            \"code\": \"IST\",\n            \"city\": \"Istanbul\",\n            \"country\": \"Turkey\"\n        },\n        \"destination\": {\n            \"id\": 4,\n            \"name\": \"Esenboga Airport\",\n            \"code\": \"ESB\",\n            \"city\": \"Ankara\",\n            \"country\": \"Turkey\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flights/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights",
+								"8"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir uçuşu günceller.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/flights/{id}`\n        \n    - **Method**: PUT\n        \n    - **Örnek URL**: `http://localhost:8080/flights/1`\n        \n    - **Body**:\n        \n\n``` json\n{\n    \"id\": 8,\n    \"flightNumber\": \"TK999\",\n    \"departureTime\": \"2024-12-01T10:00:00\",\n    \"arrivalTime\": \"2024-12-01T14:00:00\",\n    \"totalSeats\": 100,\n    \"bookedSeats\": 0,\n    \"currentTicketPrice\": 100.0,\n    \"baseTicketPrice\": 100.0,\n    \"airline\": {\n        \"id\": 2,\n        \"name\": \"Turkish Airlines\",\n        \"country\": \"Turkey\",\n        \"code\": \"TK\"\n    },\n    \"route\": {\n        \"id\": 2,\n        \"code\": \"RT1\",\n        \"departure\": {\n            \"id\": 3,\n            \"name\": \"Istanbul Airport\",\n            \"code\": \"IST\",\n            \"city\": \"Istanbul\",\n            \"country\": \"Turkey\"\n        },\n        \"destination\": {\n            \"id\": 4,\n            \"name\": \"Esenboga Airport\",\n            \"code\": \"ESB\",\n            \"city\": \"Ankara\",\n            \"country\": \"Turkey\"\n        }\n    }\n}\n\n ```\n\n**Response** (200 OK):\n\n``` json\n{\n    \"id\": 8,\n    \"flightNumber\": \"TK999\",\n    \"departureTime\": \"2024-12-01T10:00:00\",\n    \"arrivalTime\": \"2024-12-01T14:00:00\",\n    \"totalSeats\": 100,\n    \"bookedSeats\": 0,\n    \"currentTicketPrice\": 100.0,\n    \"baseTicketPrice\": 100.0,\n    \"airline\": {\n        \"id\": 2,\n        \"name\": \"Turkish Airlines\",\n        \"country\": \"Turkey\",\n        \"code\": \"TK\"\n    },\n    \"route\": {\n        \"id\": 2,\n        \"code\": \"RT1\",\n        \"departure\": {\n            \"id\": 3,\n            \"name\": \"Istanbul Airport\",\n            \"code\": \"IST\",\n            \"city\": \"Istanbul\",\n            \"country\": \"Turkey\"\n        },\n        \"destination\": {\n            \"id\": 4,\n            \"name\": \"Esenboga Airport\",\n            \"code\": \"ESB\",\n            \"city\": \"Ankara\",\n            \"country\": \"Turkey\"\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/flights/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/flights/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flights",
+								"1"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir uçuşu siler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/flights/{id}`\n        \n    - **Method**: DELETE\n        \n    - **Örnek URL**: `http://localhost:8080/flights/1`\n        \n- **Response** (204 No Content):"
+					},
+					"response": []
+				}
+			],
+			"description": "#### **Servis Adı**: Flight Service\n\n**Açıklama**: Flight Service, uçuşları yönetir. Yeni uçuşlar ekler, uçuşları günceller, uçuşları siler ve ID'ye göre uçuş bilgisi alır."
+		},
+		{
+			"name": "/routes",
+			"item": [
+				{
+					"name": "/routes",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"code\": \"RT1\",\n  \"departure\": {\n    \"id\": 3\n  },\n  \"destination\": {\n    \"id\": 4\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/routes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"routes"
+							]
+						},
+						"description": "- **Açıklama**: Yeni bir rota ekler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/routes`\n        \n    - **Method**: POST\n        \n    - **Body**:\n        \n\n``` json\n{\n  \"code\": \"RT1\",\n  \"departure\": {\n    \"id\": 3\n  },\n  \"destination\": {\n    \"id\": 4\n  }\n}\n\n ```\n\n**Response** (200 OK):\n\n``` json\n{\n    \"id\": 2,\n    \"code\": \"RT1\",\n    \"departure\": {\n        \"id\": 3,\n        \"name\": null,\n        \"code\": null,\n        \"city\": null,\n        \"country\": null\n    },\n    \"destination\": {\n        \"id\": 4,\n        \"name\": null,\n        \"code\": null,\n        \"city\": null,\n        \"country\": null\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/routes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"routes"
+							]
+						},
+						"description": "- **Açıklama**: Tüm rotalari listeler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/routes`\n        \n    - **Method**: GET\n        \n- **Response** (200 OK):\n    \n\n``` json\n[\n    {\n        \"id\": 2,\n        \"code\": \"RT1\",\n        \"departure\": {\n            \"id\": 3,\n            \"name\": \"Istanbul Airport\",\n            \"code\": \"IST\",\n            \"city\": \"Istanbul\",\n            \"country\": \"Turkey\"\n        },\n        \"destination\": {\n            \"id\": 4,\n            \"name\": \"Esenboga Airport\",\n            \"code\": \"ESB\",\n            \"city\": \"Ankara\",\n            \"country\": \"Turkey\"\n        }\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/routes/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/routes/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"routes",
+								"2"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir güzergah bilgisi getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/routes/{id}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/routes/2`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 2,\n    \"code\": \"RT1\",\n    \"departure\": {\n        \"id\": 3,\n        \"name\": \"Istanbul Airport\",\n        \"code\": \"IST\",\n        \"city\": \"Istanbul\",\n        \"country\": \"Turkey\"\n    },\n    \"destination\": {\n        \"id\": 4,\n        \"name\": \"Esenboga Airport\",\n        \"code\": \"ESB\",\n        \"city\": \"Ankara\",\n        \"country\": \"Turkey\"\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/routes/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/routes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"routes",
+								"1"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir güzergahı siler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/routes/{id}`\n        \n    - **Method**: DELETE\n        \n    - **Örnek URL**: `http://localhost:8080/routes/1`\n        \n- **Response** (204 No Content):"
+					},
+					"response": []
+				},
+				{
+					"name": "/routes/code/{code}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/routes/code/RT1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"routes",
+								"code",
+								"RT1"
+							]
+						},
+						"description": "- **Açıklama**: Kodu ile bir güzergah getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/routes/code/{code}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/routes/code/RT1`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 2,\n    \"code\": \"RT1\",\n    \"departure\": {\n        \"id\": 3,\n        \"name\": \"Istanbul Airport\",\n        \"code\": \"IST\",\n        \"city\": \"Istanbul\",\n        \"country\": \"Turkey\"\n    },\n    \"destination\": {\n        \"id\": 4,\n        \"name\": \"Esenboga Airport\",\n        \"code\": \"ESB\",\n        \"city\": \"Ankara\",\n        \"country\": \"Turkey\"\n    }\n}\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "#### **Servis Adı**: Route Service\n\n**Açıklama**: Route Service, güzergahları yönetir. Yeni güzergahlar ekler, güzergahları günceller, güzergahları siler ve ID'ye göre güzergah bilgisi alır."
+		},
+		{
+			"name": "/tickets",
+			"item": [
+				{
+					"name": "/tickets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"passengerName\": \"Ahmet Yilmaz\",\n  \"passengerEmail\": \"ahmet.yilmaz@example.com\",\n  \"code\": \"TK123456\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tickets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets"
+							]
+						},
+						"description": "- **Açıklama**: Yeni bir bilet ekler ve kredi kartı numarasını maskeleyerek kaydeder.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets`\n        \n    - **Method**: POST\n        \n    - **Body**:\n        \n\n``` json\n{\n  \"passengerName\": \"Ahmet Yilmaz\",\n  \"passengerEmail\": \"ahmet.yilmaz@example.com\",\n  \"code\": \"TK123456\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n}\n\n\n ```\n\n``` json\nResponse (200 OK):\n{\n    \"id\": 141,\n    \"passengerName\": \"Ahmet Yilmaz\",\n    \"passengerEmail\": \"ahmet.yilmaz@example.com\",\n    \"code\": \"TK123456\",\n    \"price\": 100.0,\n    \"status\": \"booked\",\n    \"creditCard\": \"123456******5432\",\n    \"flight\": {\n        \"id\": 8,\n        \"flightNumber\": null,\n        \"departureTime\": null,\n        \"arrivalTime\": null,\n        \"totalSeats\": 0,\n        \"bookedSeats\": 0,\n        \"currentTicketPrice\": 0.0,\n        \"baseTicketPrice\": 0.0,\n        \"airline\": null,\n        \"route\": null\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tickets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets"
+							]
+						},
+						"description": "- **Açıklama**: Tüm biletleri listeler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets`\n        \n    - **Method**: GET\n        \n- **Response** (200 OK):\n    \n\n``` json\n[\n    {\n        \"id\": 141,\n        \"passengerName\": \"Ahmet Yilmaz\",\n        \"passengerEmail\": \"ahmet.yilmaz@example.com\",\n        \"code\": \"TK123456\",\n        \"price\": 100.0,\n        \"status\": \"booked\",\n        \"creditCard\": \"123456******5432\",\n        \"flight\": {\n            \"id\": 8,\n            \"flightNumber\": \"TK999\",\n            \"departureTime\": \"2024-12-01T10:00:00\",\n            \"arrivalTime\": \"2024-12-01T14:00:00\",\n            \"totalSeats\": 100,\n            \"bookedSeats\": 1,\n            \"currentTicketPrice\": 100.0,\n            \"baseTicketPrice\": 100.0,\n            \"airline\": {\n                \"id\": 2,\n                \"name\": \"Turkish Airlines\",\n                \"country\": \"Turkey\",\n                \"code\": \"TK\"\n            },\n            \"route\": {\n                \"id\": 2,\n                \"code\": \"RT1\",\n                \"departure\": {\n                    \"id\": 3,\n                    \"name\": \"Istanbul Airport\",\n                    \"code\": \"IST\",\n                    \"city\": \"Istanbul\",\n                    \"country\": \"Turkey\"\n                },\n                \"destination\": {\n                    \"id\": 4,\n                    \"name\": \"Esenboga Airport\",\n                    \"code\": \"ESB\",\n                    \"city\": \"Ankara\",\n                    \"country\": \"Turkey\"\n                }\n            }\n        }\n    },\n    {\n        \"id\": 142,\n        \"passengerName\": \"Mehmet Yilmaz\",\n        \"passengerEmail\": \"mehmet.yilmaz@example.com\",\n        \"code\": \"TK234567\",\n        \"price\": 100.0,\n        \"status\": \"booked\",\n        \"creditCard\": \"1234-5678-9876-5432\",\n        \"flight\": {\n            \"id\": 8,\n            \"flightNumber\": \"TK999\",\n            \"departureTime\": \"2024-12-01T10:00:00\",\n            \"arrivalTime\": \"2024-12-01T14:00:00\",\n            \"totalSeats\": 100,\n            \"bookedSeats\": 1,\n            \"currentTicketPrice\": 100.0,\n            \"baseTicketPrice\": 100.0,\n            \"airline\": {\n                \"id\": 2,\n                \"name\": \"Turkish Airlines\",\n                \"country\": \"Turkey\",\n                \"code\": \"TK\"\n            },\n            \"route\": {\n                \"id\": 2,\n                \"code\": \"RT1\",\n                \"departure\": {\n                    \"id\": 3,\n                    \"name\": \"Istanbul Airport\",\n                    \"code\": \"IST\",\n                    \"city\": \"Istanbul\",\n                    \"country\": \"Turkey\"\n                },\n                \"destination\": {\n                    \"id\": 4,\n                    \"name\": \"Esenboga Airport\",\n                    \"code\": \"ESB\",\n                    \"city\": \"Ankara\",\n                    \"country\": \"Turkey\"\n                }\n            }\n        }\n    },\n    {\n        \"id\": 143,\n        \"passengerName\": \"Ayse Yilmaz\",\n        \"passengerEmail\": \"ayse.yilmaz@example.com\",\n        \"code\": \"TK345678\",\n        \"price\": 100.0,\n        \"status\": \"booked\",\n        \"creditCard\": \"1234-5678-9876-5432\",\n        \"flight\": {\n            \"id\": 8,\n            \"flightNumber\": \"TK999\",\n            \"departureTime\": \"2024-12-01T10:00:00\",\n            \"arrivalTime\": \"2024-12-01T14:00:00\",\n            \"totalSeats\": 100,\n            \"bookedSeats\": 1,\n            \"currentTicketPrice\": 100.0,\n            \"baseTicketPrice\": 100.0,\n            \"airline\": {\n                \"id\": 2,\n                \"name\": \"Turkish Airlines\",\n                \"country\": \"Turkey\",\n                \"code\": \"TK\"\n            },\n            \"route\": {\n                \"id\": 2,\n                \"code\": \"RT1\",\n                \"departure\": {\n                    \"id\": 3,\n                    \"name\": \"Istanbul Airport\",\n                    \"code\": \"IST\",\n                    \"city\": \"Istanbul\",\n                    \"country\": \"Turkey\"\n                },\n                \"destination\": {\n                    \"id\": 4,\n                    \"name\": \"Esenboga Airport\",\n                    \"code\": \"ESB\",\n                    \"city\": \"Ankara\",\n                    \"country\": \"Turkey\"\n                }\n            }\n        }\n    },\n    {\n        \"id\": 144,\n        \"passengerName\": \"Fatma Yilmaz\",\n        \"passengerEmail\": \"fatma.yilmaz@example.com\",\n        \"code\": \"TK456789\",\n        \"price\": 100.0,\n        \"status\": \"booked\",\n        \"creditCard\": \"1234-5678-9876-5432\",\n        \"flight\": {\n            \"id\": 8,\n            \"flightNumber\": \"TK999\",\n            \"departureTime\": \"2024-12-01T10:00:00\",\n            \"arrivalTime\": \"2024-12-01T14:00:00\",\n            \"totalSeats\": 100,\n            \"bookedSeats\": 1,\n            \"currentTicketPrice\": 100.0,\n            \"baseTicketPrice\": 100.0,\n            \"airline\": {\n                \"id\": 2,\n                \"name\": \"Turkish Airlines\",\n                \"country\": \"Turkey\",\n                \"code\": \"TK\"\n            },\n            \"route\": {\n                \"id\": 2,\n                \"code\": \"RT1\",\n                \"departure\": {\n                    \"id\": 3,\n                    \"name\": \"Istanbul Airport\",\n                    \"code\": \"IST\",\n                    \"city\": \"Istanbul\",\n                    \"country\": \"Turkey\"\n                },\n                \"destination\": {\n                    \"id\": 4,\n                    \"name\": \"Esenboga Airport\",\n                    \"code\": \"ESB\",\n                    \"city\": \"Ankara\",\n                    \"country\": \"Turkey\"\n                }\n            }\n        }\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/tickets/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tickets/141",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"141"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir bilet bilgisi getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets/{id}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/tickets/141`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 141,\n    \"passengerName\": \"Ahmet Yilmaz\",\n    \"passengerEmail\": \"ahmet.yilmaz@example.com\",\n    \"code\": \"TK123456\",\n    \"price\": 100.0,\n    \"status\": \"booked\",\n    \"creditCard\": \"123456******5432\",\n    \"flight\": {\n        \"id\": 8,\n        \"flightNumber\": \"TK999\",\n        \"departureTime\": \"2024-12-01T10:00:00\",\n        \"arrivalTime\": \"2024-12-01T14:00:00\",\n        \"totalSeats\": 100,\n        \"bookedSeats\": 1,\n        \"currentTicketPrice\": 100.0,\n        \"baseTicketPrice\": 100.0,\n        \"airline\": {\n            \"id\": 2,\n            \"name\": \"Turkish Airlines\",\n            \"country\": \"Turkey\",\n            \"code\": \"TK\"\n        },\n        \"route\": {\n            \"id\": 2,\n            \"code\": \"RT1\",\n            \"departure\": {\n                \"id\": 3,\n                \"name\": \"Istanbul Airport\",\n                \"code\": \"IST\",\n                \"city\": \"Istanbul\",\n                \"country\": \"Turkey\"\n            },\n            \"destination\": {\n                \"id\": 4,\n                \"name\": \"Esenboga Airport\",\n                \"code\": \"ESB\",\n                \"city\": \"Ankara\",\n                \"country\": \"Turkey\"\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/tickets/batch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n   {\n  \"passengerName\": \"Mehmet Yilmaz\",\n  \"passengerEmail\": \"mehmet.yilmaz@example.com\",\n  \"code\": \"TK234567\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n},\n{\n  \"passengerName\": \"Ayse Yilmaz\",\n  \"passengerEmail\": \"ayse.yilmaz@example.com\",\n  \"code\": \"TK345678\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n},\n{\n  \"passengerName\": \"Fatma Yilmaz\",\n  \"passengerEmail\": \"fatma.yilmaz@example.com\",\n  \"code\": \"TK456789\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n}\n\n]\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tickets/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"batch"
+							]
+						},
+						"description": "- **Açıklama**: Birden fazla bilet ekler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets/batch`\n        \n    - **Method**: POST\n        \n    - **Body**:\n        \n\n``` json\n[\n   {\n  \"passengerName\": \"Mehmet Yilmaz\",\n  \"passengerEmail\": \"mehmet.yilmaz@example.com\",\n  \"code\": \"TK234567\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n},\n{\n  \"passengerName\": \"Ayse Yilmaz\",\n  \"passengerEmail\": \"ayse.yilmaz@example.com\",\n  \"code\": \"TK345678\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n},\n{\n  \"passengerName\": \"Fatma Yilmaz\",\n  \"passengerEmail\": \"fatma.yilmaz@example.com\",\n  \"code\": \"TK456789\",\n  \"price\": 100.00,\n  \"status\": \"booked\",\n  \"creditCard\": \"1234-5678-9876-5432\",\n  \"flight\": {\n    \"id\": 8\n  }\n}\n]\n\n ```\n\n**Response (200 OK):**\n\n``` json\n[\n    {\n        \"id\": 142,\n        \"passengerName\": \"Mehmet Yilmaz\",\n        \"passengerEmail\": \"mehmet.yilmaz@example.com\",\n        \"code\": \"TK234567\",\n        \"price\": 100.0,\n        \"status\": \"booked\",\n        \"creditCard\": \"1234-5678-9876-5432\",\n        \"flight\": {\n            \"id\": 8,\n            \"flightNumber\": null,\n            \"departureTime\": null,\n            \"arrivalTime\": null,\n            \"totalSeats\": 0,\n            \"bookedSeats\": 0,\n            \"currentTicketPrice\": 0.0,\n            \"baseTicketPrice\": 0.0,\n            \"airline\": null,\n            \"route\": null\n        }\n    },\n    {\n        \"id\": 143,\n        \"passengerName\": \"Ayse Yilmaz\",\n        \"passengerEmail\": \"ayse.yilmaz@example.com\",\n        \"code\": \"TK345678\",\n        \"price\": 100.0,\n        \"status\": \"booked\",\n        \"creditCard\": \"1234-5678-9876-5432\",\n        \"flight\": {\n            \"id\": 8,\n            \"flightNumber\": null,\n            \"departureTime\": null,\n            \"arrivalTime\": null,\n            \"totalSeats\": 0,\n            \"bookedSeats\": 0,\n            \"currentTicketPrice\": 0.0,\n            \"baseTicketPrice\": 0.0,\n            \"airline\": null,\n            \"route\": null\n        }\n    },\n    {\n        \"id\": 144,\n        \"passengerName\": \"Fatma Yilmaz\",\n        \"passengerEmail\": \"fatma.yilmaz@example.com\",\n        \"code\": \"TK456789\",\n        \"price\": 100.0,\n        \"status\": \"booked\",\n        \"creditCard\": \"1234-5678-9876-5432\",\n        \"flight\": {\n            \"id\": 8,\n            \"flightNumber\": null,\n            \"departureTime\": null,\n            \"arrivalTime\": null,\n            \"totalSeats\": 0,\n            \"bookedSeats\": 0,\n            \"currentTicketPrice\": 0.0,\n            \"baseTicketPrice\": 0.0,\n            \"airline\": null,\n            \"route\": null\n        }\n    }\n]\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/tickets/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 142,\n\n  \"status\": \"check-in\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/tickets/142",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"142"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir bileti günceller.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets/{id}`\n        \n    - **Method**: PUT\n        \n    - **Body**:\n        \n\n``` json\n{\n    \"id\": 142,\n  \"status\": \"check-in\"\n}\n\n ```\n\n``` json\nResponse (200 OK):\n{\n    \"id\": 142,\n    \"passengerName\": null,\n    \"passengerEmail\": null,\n    \"code\": \"TK234567\",\n    \"price\": null,\n    \"status\": \"check-in\",\n    \"creditCard\": \"1234-5678-9876-5432\",\n    \"flight\": null\n}\n\n ```"
+					},
+					"response": []
+				},
+				{
+					"name": "/tickets/{id}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tickets/143",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"143"
+							]
+						},
+						"description": "- **Açıklama**: ID'ye göre bir bileti siler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets/{id}`\n        \n    - **Method**: DELETE\n        \n    - **Örnek URL**: `http://localhost:8080/tickets/1`\n        \n- **Response** (204 No Content):"
+					},
+					"response": []
+				},
+				{
+					"name": "/tickets/code/{code}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tickets/code/TK234567",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"code",
+								"TK234567"
+							]
+						},
+						"description": "- **Açıklama**: Kodu ile bir bileti siler.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets/code/{code}`\n        \n    - **Method**: DELETE\n        \n    - **Örnek URL**: `http://localhost:8080/tickets/code/TICKET123`\n        \n- **Response** (204 No Content):"
+					},
+					"response": []
+				},
+				{
+					"name": "/tickets/code/{code}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/tickets/code/TK456789",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tickets",
+								"code",
+								"TK456789"
+							]
+						},
+						"description": "- **Açıklama**: Kodu ile bir bilet getirir.\n    \n- **Request**:\n    \n    - **URL**: `http://localhost:8080/tickets/code/{code}`\n        \n    - **Method**: GET\n        \n    - **Örnek URL**: `http://localhost:8080/tickets/code/TICKET123`\n        \n- **Response** (200 OK):\n    \n\n``` json\n{\n    \"id\": 144,\n    \"passengerName\": \"Fatma Yilmaz\",\n    \"passengerEmail\": \"fatma.yilmaz@example.com\",\n    \"code\": \"TK456789\",\n    \"price\": 100.0,\n    \"status\": \"booked\",\n    \"creditCard\": \"1234-5678-9876-5432\",\n    \"flight\": {\n        \"id\": 8,\n        \"flightNumber\": \"TK999\",\n        \"departureTime\": \"2024-12-01T10:00:00\",\n        \"arrivalTime\": \"2024-12-01T14:00:00\",\n        \"totalSeats\": 100,\n        \"bookedSeats\": 1,\n        \"currentTicketPrice\": 100.0,\n        \"baseTicketPrice\": 100.0,\n        \"airline\": {\n            \"id\": 2,\n            \"name\": \"Turkish Airlines\",\n            \"country\": \"Turkey\",\n            \"code\": \"TK\"\n        },\n        \"route\": {\n            \"id\": 2,\n            \"code\": \"RT1\",\n            \"departure\": {\n                \"id\": 3,\n                \"name\": \"Istanbul Airport\",\n                \"code\": \"IST\",\n                \"city\": \"Istanbul\",\n                \"country\": \"Turkey\"\n            },\n            \"destination\": {\n                \"id\": 4,\n                \"name\": \"Esenboga Airport\",\n                \"code\": \"ESB\",\n                \"city\": \"Ankara\",\n                \"country\": \"Turkey\"\n            }\n        }\n    }\n}\n\n ```"
+					},
+					"response": []
+				}
+			],
+			"description": "#### **Servis Adı**: Ticket Service\n\n**Açıklama**: Ticket Service, bilet işlemlerini yönetir. Bilet ekler, günceller, siler ve bilet bilgisi alır."
+		}
+	]
+}
